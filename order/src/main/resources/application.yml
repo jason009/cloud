@@ -1,0 +1,13 @@
+server:
+  port: 9080
+  servlet:
+    context-path: /order-api
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://admin:123456@127.0.0.1:10000/eureka/
+spring:
+  application:
+    name: order-api

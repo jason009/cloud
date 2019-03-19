@@ -1,0 +1,15 @@
+server:
+  port: 7080
+  servlet:
+    context-path: /item-api
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:123456@localhost:10000/eureka/
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+    #instance-id: ${spring.application.name}:${server.port}
+spring:
+  application:
+    name: item-api
