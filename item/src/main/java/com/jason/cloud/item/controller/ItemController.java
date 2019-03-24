@@ -11,8 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/item")
 public class ItemController {
+    @Autowired
+    private Config config;
+
     @GetMapping("/{id}")
     public Item getItem(@PathVariable Integer id) {
+        System.out.println(config.getName());
         return Util.getItem(id);
     }
 }
