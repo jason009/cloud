@@ -7,4 +7,5 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/jason009/config-server.git
+          uri: https://github.com/jason009/cloud.git
+          search-paths: config-server
