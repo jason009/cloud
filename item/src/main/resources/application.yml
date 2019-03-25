@@ -10,6 +10,7 @@ eureka:
     prefer-ip-address: true
     ip-address: 127.0.0.1
     #instance-id: ${spring.application.name}:${server.port}
+
 spring:
   application:
     name: item-api
@@ -19,3 +20,8 @@ spring:
       uri: http://localhost:10002
       profile: dev
       label: master
+management:
+  endpoints:
+    web:
+      exposure:
+        include: =*
