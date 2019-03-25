@@ -14,14 +14,8 @@ eureka:
 spring:
   application:
     name: item-api
-  cloud:
-    config:
-      name: config
-      uri: http://localhost:10002
-      profile: dev
-      label: master
 management:
   endpoints:
     web:
       exposure:
-        include: =*
+        include: "*"
