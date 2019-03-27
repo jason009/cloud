@@ -7,5 +7,13 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/jason009/cloud.git
+          #uri: https://github.com/jason009/cloud.git
+          uri: http://192.168.56.103:3000/root/cloud.git
           search-paths: config-server
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:123456@localhost:10000/eureka/
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
