@@ -1,4 +1,4 @@
-package com.jason.cloud.item.controller;
+package com.jason.cloud.config.controller;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -15,12 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class RefreshController {
-    @RequestMapping("/refresh2")
-    @ResponseBody
-    public Object refresh(HttpServletRequest request, @RequestBody(required = false) String s) {
-        return new ModelAndView("/actuator/refresh");
-    }
-
     @RequestMapping("/bus-refresh")
     @ResponseBody
     public Object busRefresh(HttpServletRequest request, @RequestBody(required = false) String s) {
@@ -34,17 +28,7 @@ public class RefreshController {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add(HttpHeaders.CONTENT_TYPE, "application/json");
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(null, httpHeaders);
-        ResponseEntity<String> stringResponseEntity = restTemplate.postForEntity("http://localhost:10002/config-server/actuator/bus-refresh", request, String.class);
-        return stringResponseEntity.getBody();
-    }
-
-    @RequestMapping("/refresh")
-    public Object refresh() {
-        RestTemplate restTemplate = new RestTemplate();
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add(HttpHeaders.CONTENT_TYPE, "application/json");
-        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(null, httpHeaders);
-        ResponseEntity<String> stringResponseEntity = restTemplate.postForEntity("http://localhost:10002/config-server/actuator/refresh", request, String.class);
+        ResponseEntity<String> stringResponseEntity = restTemplate.postForEntity("http://localhost:10002/actuator/bus-refresh", request, String.class);
         return stringResponseEntity.getBody();
     }
 }

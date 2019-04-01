@@ -6,9 +6,9 @@ spring:
   cloud:
     config:
       name: config
-      #uri: http://localhost:10002
+      #uri: http://localhost:10002/config-server
       profile: dev
       label: master
       discovery:
         enabled: true
-        service-id: CONFIG-SERVER
+        service-id: config-server

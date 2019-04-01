@@ -1,5 +1,7 @@
 server:
   port: 10002
+  #servlet:
+  #  context-path: /config-server
 spring:
   application:
     name: config-server
@@ -10,6 +12,11 @@ spring:
           #uri: https://github.com/jason009/cloud.git
           uri: http://192.168.56.103:3000/root/cloud.git
           search-paths: config-server
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 eureka:
   client:
     service-url:
@@ -17,3 +24,9 @@ eureka:
   instance:
     prefer-ip-address: true
     ip-address: 127.0.0.1
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  # post http://localhost:7080/item-api/actuator/refresh
