@@ -1,5 +1,5 @@
 server:
-  port: 7080
+  port: 7090
   servlet:
     context-path: /item-api
 eureka:
@@ -20,3 +20,8 @@ management:
       exposure:
         include: "*"
 # post http://localhost:7080/item-api/actuator/refresh
+  rabbitmq:
+    host: localhost
+    port: 15672
+    username: guest
+    password: guest

@@ -18,10 +18,26 @@ import javax.servlet.http.HttpServletRequest;
 public class RefreshController {
     @RequestMapping("/refresh2")
     @ResponseBody
-    public Object busRefresh(HttpServletRequest request, @RequestBody(required = false) String s) {
+    public Object refresh(HttpServletRequest request, @RequestBody(required = false) String s) {
         return new ModelAndView("/actuator/refresh");
     }
 
+    @RequestMapping("/bus-refresh")
+    @ResponseBody
+    public Object busRefresh(HttpServletRequest request, @RequestBody(required = false) String s) {
+        return new ModelAndView("/actuator/bus-refresh");
+    }
+
+    @RequestMapping("/bus-refresh2")
+    @ResponseBody
+    public Object busRefresh2() {
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.add(HttpHeaders.CONTENT_TYPE, "application/json");
+        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(null, httpHeaders);
+        ResponseEntity<String> stringResponseEntity = restTemplate.postForEntity("http://localhost:7080/item-api/actuator/bus-refresh", request, String.class);
+        return stringResponseEntity.getBody();
+    }
     @RequestMapping("/refresh")
     public Object refresh() {
         RestTemplate restTemplate = new RestTemplate();
@@ -31,5 +47,4 @@ public class RefreshController {
         ResponseEntity<String> stringResponseEntity = restTemplate.postForEntity("http://localhost:7080/item-api/actuator/refresh", request, String.class);
         return stringResponseEntity.getBody();
     }
-
 }
